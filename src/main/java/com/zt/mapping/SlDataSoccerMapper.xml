@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zt.dao.SlDataSoccerMapper" >
+    <resultMap id="dataMap" type="com.zt.pojo.SlDataSoccer" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="event_id" property="eventId" jdbcType="VARCHAR" />
+        <result column="data_id" property="dataId" jdbcType="VARCHAR" />
+        <result column="number_of_periods" property="numberOfPeriods" jdbcType="VARCHAR" />
+        <result column="lottery_type" property="lotteryType" jdbcType="VARCHAR" />
+        <result column="data_type" property="dataType" jdbcType="VARCHAR" />
+        <result column="period" property="period" jdbcType="VARCHAR" />
+        <result column="num_id" property="numId" jdbcType="VARCHAR" />
+        <result column="num_name" property="numName" jdbcType="VARCHAR" />
+        <result column="start_date" property="startDate" jdbcType="VARCHAR" />
+        <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+        <result column="event_date" property="eventDate" jdbcType="VARCHAR" />
+        <result column="event_type" property="eventType" jdbcType="VARCHAR" />
+        <result column="event_type_abrv" property="eventTypeAbrv" jdbcType="VARCHAR" />
+        <result column="home" property="home" jdbcType="VARCHAR" />
+        <result column="home_abrv" property="homeAbrv" jdbcType="VARCHAR" />
+        <result column="visitor" property="visitor" jdbcType="VARCHAR" />
+        <result column="visitor_abrv" property="visitorAbrv" jdbcType="VARCHAR" />
+        <result column="event_bg_color" property="eventBgColor" jdbcType="VARCHAR" />
+        <result column="contents" property="contents" jdbcType="VARCHAR" />
+        <result column="home_score" property="homeScore" jdbcType="VARCHAR" />
+        <result column="visitor_score" property="visitorScore" jdbcType="VARCHAR" />
+        <result column="home_score_half" property="homeScoreHalf" jdbcType="VARCHAR" />
+        <result column="visitor_score_half" property="visitorScoreHalf" jdbcType="VARCHAR" />
+        <result column="created" property="created" jdbcType="VARCHAR" />
+        <result column="updated" property="updated" jdbcType="VARCHAR" />
+
+        <result column="createdAt" property="createdAt" javaType="java.util.Date" jdbcType="DATE" />
+        <result column="updatedAt" property="updatedAt" javaType="java.util.Date" jdbcType="DATE" />
+    </resultMap>
+    <!--根据id查询-->
+    <select id="findByDate" resultMap="dataMap">
+    select cast(left(number_of_periods, 8) as date), s.* from  `default@default`.Sl_data_soccer s
+  where cast(left(number_of_periods, 8) as date) >= #{date};
+    </select>
+
+    <select id="findByNmber" resultMap="dataMap">
+    SELECT * FROM `default@default`.Sl_data_soccer where number_of_periods like #{numberOfPeriods}"%";
+    </select>
+
+</mapper>
