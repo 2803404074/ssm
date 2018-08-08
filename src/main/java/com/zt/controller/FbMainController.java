@@ -35,10 +35,13 @@ public class FbMainController {
             init();
             SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
             String date = df.format(new Date());
-            String[] dd = date.split("-");
-            int sys = Integer.parseInt(dd[2]);
-            List<SlDataSoccer> list = dataSoccerService.findByDate(date);
-            String one = "";
+            System.out.println("时间:"+date);
+            List<SlDataSoccer> list = dataSoccerService.findByDate("2018-08-07");
+
+
+            String period1 = "";
+            String period2 = "";
+            period1 = (list.get(0).getNumberOfPeriods()).substring(0,8);
             for (SlDataSoccer slDataSoccer : list) {
                 if (slDataSoccer != null) {
                     String id = slDataSoccer.getId();
@@ -50,22 +53,27 @@ public class FbMainController {
                     String visitor = slDataSoccer.getVisitor();//客队名称
                     String eventBgColor = slDataSoccer.getEventBgColor();//赛事背景颜色
                     FB_MainInfo FB_MainInfo = new FB_MainInfo(id, numId, eventType, startDate, startTime, home, visitor, eventBgColor);
-                    String bb = slDataSoccer.getNumberOfPeriods().substring(6);
-                    String cc = bb.substring(0, 2);
-                    lists.add(FB_MainInfo);
-//                    if (database != sys) {
-//                        lists2.add(FB_MainInfo);
-//                    }
-//                    if (database != sys) {
-//                        lists3.add(FB_MainInfo);
-//                    }
+                    //方法二
+                    String  number = slDataSoccer.getNumberOfPeriods().substring(0,8);
+                    if(period1.equals(number)){
+                        lists.add(FB_MainInfo);
+                        period1 = number;
+                    }else if (period2==""){
+                        period2=number;
+                    }
+                    if(period2.equals(number) && period2!=""){
+                        lists2.add(FB_MainInfo);
+                        period2 = number;
+                    }else if (!period1.equals(number)){
+                        lists3.add(FB_MainInfo);
+                    }
                 } else {
-                    System.out.println("查询失败");
+                    System.out.println("错误");
                 }
             }
-            maps.put(one, lists);
-//            maps.put("tow", lists2);
-//            maps.put("three", lists3);
+            maps.put("one", lists);
+            maps.put("tow", lists2);
+            maps.put("three",lists3);
             jsonObject.put("mainInfo", maps);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
