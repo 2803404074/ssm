@@ -11,7 +11,7 @@ public class FB_SpfInfo {
 
 
 
-    public FB_SpfInfo(String matchID, String handicap, String current_spf, String current_rqspf) {
+    public FB_SpfInfo(String matchID, String handicap, Object current_spf, Object current_rqspf) {
         this.matchID = matchID;
         this.handicap = handicap;
         this.current_spf = current_spf;

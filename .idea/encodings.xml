@@ -2,5 +2,9 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zt/controller/BaseContollerCheckParams.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zt/controller/FbControllerGet.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zt/controller/FbControllerOddsJqs.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/zt/controller/FbControllerOddsSpf.java" charset="GBK" />
   </component>
 </project>

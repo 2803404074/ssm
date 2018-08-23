@@ -21,7 +21,9 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * 获取总进球数数据访问接口
+ * 获取总进球数数据访问接口（参数控制）一天
+ *
+ * 获取总进球数数据访问接口（三天）
  */
 @Controller
 public class FbJqsController {
@@ -118,4 +120,6 @@ public class FbJqsController {
             e.printStackTrace();
         }
     }
+
+
 }

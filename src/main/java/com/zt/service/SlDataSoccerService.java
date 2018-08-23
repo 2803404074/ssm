@@ -28,4 +28,17 @@ public class SlDataSoccerService {
         }
         return null;
     }
+
+    /**
+     * CFR,
+     * 从输入日期 fromDate 起，查询连续 periodCount 期的受注场次数据
+     * */
+    public List getBetGamesFromDate(String fromDate, int periodCount)
+    {
+        List<SlDataSoccer> dataSoccer= this.slDataSoccerMapper.getBetGamesFromDate(fromDate, periodCount);
+        if(dataSoccer!=null){
+            return dataSoccer;
+        }
+        return null;
+    }
 }
